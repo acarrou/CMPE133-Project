@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Tileset Grass.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Skeleton/Skeleton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Tileset Grass.png 0"

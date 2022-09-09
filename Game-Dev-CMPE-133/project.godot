@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="10 LOC Survivors"
+config/name="cmpe 133 project"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
