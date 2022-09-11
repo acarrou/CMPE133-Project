@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Circle.png-4c2daeed5b68bce1e78feca310d5dbd2.stex"
+path="res://.import/Circle_blurred.png-6c3a275f155cea3026928af19e69a1d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Circle.png"
-dest_files=[ "res://.import/Circle.png-4c2daeed5b68bce1e78feca310d5dbd2.stex" ]
+source_file="res://Assets/Effects/Circle_blurred.png"
+dest_files=[ "res://.import/Circle_blurred.png-6c3a275f155cea3026928af19e69a1d7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

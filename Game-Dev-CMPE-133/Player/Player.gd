@@ -1,7 +1,17 @@
 extends KinematicBody2D
 
 export (int) var speed = 300
+export (int) var maxhealth = 100
+export (int) var currenthealth = maxhealth
+
 var velocity = Vector2()
+var t = Timer.new()
+onready var HealthBar = $HealthBar
+onready var ExpBar = $ExpBar
+
+func ready():
+	add_to_group("Player")
+	HealthBar.max_value = maxhealth
 
 func get_input():
 	velocity = Vector2()
@@ -17,7 +27,6 @@ func get_input():
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
 		
-
 func _physics_process(delta):
 	get_input()
 	if (velocity.x or velocity.y != 0):
@@ -31,7 +40,16 @@ func shoot():
 
 func spawn():
 	get_parent().add_child(load("res://Enemies/Skeleton/Skeleton.tscn").instance())
+	get_parent().add_child(load("res://Enemies/Bat/Bat.tscn").instance())
 
 func enemyContact(enemyHitbox):
-	$DeathAnimationPlayer.play("Death")
-	get_tree().reload_current_scene()
+	currenthealth -= 10
+	HealthBar.value = currenthealth
+	
+	if (currenthealth <= 0):
+		$AnimationSprite.stop()
+		set_physics_process(false)
+		$AnimationSprite.play("Wizard Dying")
+		yield($AnimationSprite, "animation_finished")
+		hide()
+		get_tree().reload_current_scene()
