@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wizard2.png-cde13fbae072b0f76df97fbbbdf82672.stex"
+path="res://.import/Star.png-fc9f83610c002f0436a20956dbbd1bf9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Wizard/Wizard2.png"
-dest_files=[ "res://.import/Wizard2.png-cde13fbae072b0f76df97fbbbdf82672.stex" ]
+source_file="res://Assets/Effects/Star.png"
+dest_files=[ "res://.import/Star.png-fc9f83610c002f0436a20956dbbd1bf9.stex" ]
 
 [params]
 

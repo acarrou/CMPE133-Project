@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Star.png-9688141e344f5a28cadfa9cfff8735d8.stex"
+path="res://.import/Run.png-0674c8bcaeac88164c362208f312bddd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Star.png"
-dest_files=[ "res://.import/Star.png-9688141e344f5a28cadfa9cfff8735d8.stex" ]
+source_file="res://Assets/Wizard/Run.png"
+dest_files=[ "res://.import/Run.png-0674c8bcaeac88164c362208f312bddd.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

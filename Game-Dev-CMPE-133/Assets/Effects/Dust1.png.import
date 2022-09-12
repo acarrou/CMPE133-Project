@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wizard_death_4.png-7e04bef7188f04f96f8a08b2f31c034f.stex"
+path="res://.import/Dust1.png-1c2b0846f3ebd3aa7c5866f64c93eaa9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Wizard/Wizard_death_4.png"
-dest_files=[ "res://.import/Wizard_death_4.png-7e04bef7188f04f96f8a08b2f31c034f.stex" ]
+source_file="res://Assets/Effects/Dust1.png"
+dest_files=[ "res://.import/Dust1.png-1c2b0846f3ebd3aa7c5866f64c93eaa9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

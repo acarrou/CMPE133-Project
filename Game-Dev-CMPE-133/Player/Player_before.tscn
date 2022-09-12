@@ -361,7 +361,7 @@ position = Vector2( -1, -52 )
 scale = Vector2( 2.582, 2.461 )
 frames = SubResource( 1 )
 animation = "Wizard Running"
-frame = 1
+frame = 6
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -373,7 +373,7 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2.5, 2.5 )
+zoom = Vector2( 1.5, 1.5 )
 
 [node name="ShootAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Attack"
@@ -382,6 +382,7 @@ anims/Attack = SubResource( 3 )
 
 [node name="SpawnAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Spawn"
+playback_speed = 0.5
 anims/Spawn = SubResource( 7 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
@@ -414,10 +415,10 @@ value = 100.0
 percent_visible = false
 
 [node name="ExpBar" type="ProgressBar" parent="."]
-margin_left = -1567.0
-margin_top = -868.0
-margin_right = 1559.0
-margin_bottom = -833.0
+margin_left = -724.0
+margin_top = -509.0
+margin_right = 727.0
+margin_bottom = -474.0
 theme = SubResource( 41 )
 value = 100.0
 
