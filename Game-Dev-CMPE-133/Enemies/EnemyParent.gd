@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var max_health = 100
+onready var current_health = max_health
 var spawn_distance = 1800
 
 func _ready():
@@ -12,3 +14,9 @@ func _physics_process(delta):
 		$AnimatedSprite.flip_h = true
 	else:
 		$AnimatedSprite.flip_h = false
+
+
+#Add a timer here so at each time different enemies will spawn
+func spawn():
+	get_parent().add_child(load("res://Enemies/Skeleton/Skeleton.tscn").instance())
+	get_parent().add_child(load("res://Enemies/Bat/Bat.tscn").instance())

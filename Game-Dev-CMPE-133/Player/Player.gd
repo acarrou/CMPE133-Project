@@ -38,10 +38,6 @@ func _physics_process(delta):
 func shoot():
 	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
 
-func spawn():
-	get_parent().add_child(load("res://Enemies/Skeleton/Skeleton.tscn").instance())
-	get_parent().add_child(load("res://Enemies/Bat/Bat.tscn").instance())
-
 func enemyContact(enemyHitbox):
 	currenthealth -= 10
 	HealthBar.value = currenthealth
