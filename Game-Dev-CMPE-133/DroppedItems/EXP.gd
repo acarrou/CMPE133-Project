@@ -1,16 +1,20 @@
-extends Area2D
+extends RigidBody2D
 
 
-export (int) var exp_amount = 50
-var item_name
-var velocity = Vector2()
+export var value:int = 5
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	item_name = "EXP"
+var impluse_randomizer : RandomNumberGenerator = RandomNumberGenerator.new()
 
-func _physics_process(delta):
-	for body in get_overlapping_bodies():
-		if body.name.find("Player") != -1 and self.visible:
-			emit_signal("body_entered", self)
-			self.hide()
+func _ready() -> void:
+	impluse_randomizer.randomize()
+	var impluse:Vector2 = Vector2(impluse_randomizer.randi_range(0,0),impluse_randomizer.randi_range(0,0))
+	self.apply_impulse(self.position,impluse)
+	
+
+
+#func _on_Area2D_body_entered(body: Node) -> void:
+	#if body.is_in_group("player"):
+		#GlobalSingleton.Gold_coin += value
+		#print(GlobalSingleton.Gold_coin)
+		#self.queue_free()
+	#pass # Replace with function body.
