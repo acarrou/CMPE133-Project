@@ -3,6 +3,7 @@ extends KinematicBody2D
 var max_health = 100
 onready var current_health = max_health
 var spawn_distance = 1800
+onready var gem = preload("res://DroppedItems/EXP.tscn")
 
 func _ready():
 	position = get_parent().get_node("Player").position + Vector2(spawn_distance, 0).rotated(rand_range(0, 2*PI))
@@ -14,7 +15,6 @@ func _physics_process(delta):
 		$AnimatedSprite.flip_h = true
 	else:
 		$AnimatedSprite.flip_h = false
-
 
 #Add a timer here so at each time different enemies will spawn
 func spawn():
