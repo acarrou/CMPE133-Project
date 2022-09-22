@@ -1,13 +1,15 @@
 extends KinematicBody2D
 
-export (int) var speed = 300
-export (int) var maxhealth = 100
-export (int) var currenthealth = maxhealth
+var speed = 300
+var maxhealth = 100
+var currenthealth = maxhealth
+var damage_out = 10
 
 var velocity = Vector2()
 var t = Timer.new()
 onready var HealthBar = $HealthBar
 onready var ExpBar = $ExpBar
+
 
 func ready():
 	add_to_group("Player")
@@ -38,6 +40,7 @@ func _physics_process(delta):
 func shoot():
 	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
 
+#Needs its own hitbox function
 func enemyContact(enemyHitbox):
 	currenthealth -= 10
 	HealthBar.value = currenthealth
