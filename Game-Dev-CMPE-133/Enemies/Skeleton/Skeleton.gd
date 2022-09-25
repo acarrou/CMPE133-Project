@@ -28,16 +28,18 @@ func _on_Hurtbox_area_entered(area):
 	if (area.name == "Player"):
 		print("Player Entered")
 	else:
-		current_health -= damage
-		$AnimatedSprite.play("Hurt")
-		yield($AnimatedSprite, "animation_finished")
-		$AnimatedSprite.play("Walking")
-		print("Ouch!")
 		if (current_health <= 0):
 			$AnimatedSprite.stop()
 			set_physics_process(false)
-			$AnimatedSprite.play("Death")
+			$AnimationPlayer.play("Death")
 			yield($AnimatedSprite, "animation_finished")
 			hide()
 			queue_free()
+		else:
+			current_health -= damage
+			$AnimatedSprite.play("Hurt")
+			yield($AnimatedSprite, "animation_finished")
+			$AnimatedSprite.play("Walking")
+			print("Ouch!")
+
 

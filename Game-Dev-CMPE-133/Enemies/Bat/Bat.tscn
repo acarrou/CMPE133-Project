@@ -332,7 +332,6 @@ position = Vector2( -15, -91 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Flight"
-frame = 6
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -354,5 +353,7 @@ anims/RESET = SubResource( 5 )
 [node name="ScalingAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Scaling"
 anims/Scaling = SubResource( 6 )
+
+[node name="Hurt" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
