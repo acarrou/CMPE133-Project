@@ -290,6 +290,7 @@ position = Vector2( 9, -77 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Walking"
+frame = 2
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="."]

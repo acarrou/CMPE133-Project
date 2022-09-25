@@ -331,13 +331,13 @@ position = Vector2( -1, -52 )
 scale = Vector2( 2.582, 2.461 )
 frames = SubResource( 1 )
 animation = "Wizard Running"
-frame = 1
+frame = 7
 playing = true
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="PlayerHurtbox" type="Area2D" parent="."]
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
 position = Vector2( 1, -11 )
 shape = SubResource( 2 )
 
@@ -387,4 +387,4 @@ margin_bottom = -833.0
 theme = SubResource( 41 )
 value = 100.0
 
-[connection signal="area_entered" from="Hurtbox" to="." method="enemyContact"]
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="enemyContact"]
