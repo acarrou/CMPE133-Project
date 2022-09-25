@@ -23,6 +23,6 @@ func spawn():
 	get_parent().add_child(load("res://Enemies/Skeleton/Skeleton.tscn").instance())
 	get_parent().add_child(load("res://Enemies/Bat/Bat.tscn").instance())
 
-func enemyContact(enemyHitbox):
+func playerContact(playerHitbox):
 	current_health -= damage
 	print("Getting hit")

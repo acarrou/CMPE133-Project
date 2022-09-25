@@ -3,7 +3,7 @@ extends KinematicBody2D
 var speed = 300
 var maxhealth = 100
 var currenthealth = maxhealth
-var damage_out = 10
+var damage_out = 30
 
 var velocity = Vector2()
 var t = Timer.new()
