@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 [autoload]
 
 OnScreenKeyboard="*res://ui/OnScreenKeyboard.tscn"
+Bullet="*res://Weapons&Spells/Bullet.tscn"
 
 [display]
 
