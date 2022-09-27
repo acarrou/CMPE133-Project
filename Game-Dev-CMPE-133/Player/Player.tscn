@@ -331,7 +331,7 @@ position = Vector2( -1, -52 )
 scale = Vector2( 2.582, 2.461 )
 frames = SubResource( 1 )
 animation = "Wizard Running"
-frame = 6
+frame = 4
 playing = true
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
@@ -386,5 +386,6 @@ margin_right = 1559.0
 margin_bottom = -833.0
 theme = SubResource( 41 )
 
-[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_Gem_area_entered"]
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="enemyContact"]
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_Gem_area_entered"]
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_HealthPotion_area_entered"]
