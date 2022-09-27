@@ -19,6 +19,5 @@ func _physics_process(delta):
 
 #Add a timer here so at each time different enemies will spawn
 func spawn():
-	pass
 	get_parent().add_child(load("res://Enemies/Skeleton/Skeleton.tscn").instance())
 	get_parent().add_child(load("res://Enemies/Bat/Bat.tscn").instance())
