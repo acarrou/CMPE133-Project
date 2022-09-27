@@ -47,4 +47,4 @@ position = Vector2( 508, 310 )
 [node name="EnemyParent" parent="YSort" instance=ExtResource( 3 )]
 
 [node name="EXP" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 0, -3 )
+position = Vector2( 0, 15 )

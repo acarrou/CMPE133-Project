@@ -7,6 +7,7 @@ var damage_out = 30
 var current_exp = 0
 var next_level_exp = 4
 var level = 1
+var enemies_killed = 0
 
 var velocity = Vector2()
 var t = Timer.new()

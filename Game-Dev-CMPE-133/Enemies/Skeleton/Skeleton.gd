@@ -4,6 +4,7 @@ var max_health = 60
 onready var current_health = max_health
 var spawn_distance = 1800
 onready var damage = get_parent().get_node("Player").damage_out
+onready var enemies_killed = get_parent().get_node("Player").enemies_killed
 var gem_scene = preload("res://DroppedItems/EXP.tscn")
 var gem = load("res://DroppedItems/EXP.tscn").instance()
 
@@ -22,15 +23,17 @@ func _physics_process(delta):
 func EXP_drop():
 	print("Creating Gem")
 	var gem = gem_scene.instance()
+	#TODO Get Tree Node so you don't need to add a gem in the Main Map
 	get_parent().get_node("EXP").call_deferred("add_child", gem)
 	gem.position = position
 
 func check_death():
 	if (current_health <= 0):
-			EXP_drop()
+			enemies_killed += 1
 			$AnimatedSprite.stop()
 			set_physics_process(false)
 			$AnimationPlayer.play("Death")
+			EXP_drop()
 			yield($AnimatedSprite, "animation_finished")
 			hide()
 			queue_free()
