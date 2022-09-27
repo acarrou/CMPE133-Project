@@ -1,16 +1,17 @@
 extends KinematicBody2D
 
-var collected = false
-var spawn_distance = 0
+var entered_magnet = false
 		
-#func physics_process():
-	#move_and_slide((get_parent().get_node("Player").position - position).normalized() * $AnimatedSprite.speed_scale*2)
+func _physics_process(delta):
+	if (entered_magnet == false):
+		pass
+	else:
+		position += (get_parent().get_node("Player").position - position)/10
 
 func _on_Magnet_area_entered(area):
 	if (area.get_name() == "PlayerHurtbox"):
-		#Come closer to player
-		pass
-
+		entered_magnet = true
+		
 
 func _on_Gem_area_entered(area):
 	if (area.get_name() == "PlayerHurtbox"):

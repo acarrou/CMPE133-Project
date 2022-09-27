@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Assets/Wizard/Death.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=8]
@@ -177,34 +177,6 @@ scale = 3.01
 scale_random = 0.5
 color_ramp = SubResource( 5 )
 
-[sub_resource type="Animation" id=8]
-resource_name = "Scaling"
-length = 10000.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("ShootAnimationPlayer:playback_speed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2600 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.1, 10.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationSprite:speed_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 2600 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 15.0 ]
-}
-
 [sub_resource type="Animation" id=9]
 resource_name = "Death"
 tracks/0/type = "value"
@@ -331,7 +303,7 @@ position = Vector2( -1, -52 )
 scale = Vector2( 2.582, 2.461 )
 frames = SubResource( 1 )
 animation = "Wizard Running"
-frame = 4
+frame = 5
 playing = true
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
@@ -358,10 +330,6 @@ explosiveness = 0.57
 process_material = SubResource( 6 )
 texture = ExtResource( 10 )
 
-[node name="ScalingAnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Scaling"
-anims/Scaling = SubResource( 8 )
-
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Death = SubResource( 9 )
 anims/RESET = SubResource( 10 )
@@ -386,6 +354,6 @@ margin_right = 1559.0
 margin_bottom = -833.0
 theme = SubResource( 41 )
 
-[connection signal="area_entered" from="PlayerHurtbox" to="." method="enemyContact"]
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_Gem_area_entered"]
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_HealthPotion_area_entered"]
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="enemyContact"]
