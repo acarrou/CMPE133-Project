@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Maps/Tileset Grass.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/EnemyParent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://DroppedItems/EXP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/WorldSpawner.tscn" type="PackedScene" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Tileset Grass.png 0"
@@ -45,6 +44,3 @@ position = Vector2( -504, -316 )
 position = Vector2( 508, 310 )
 
 [node name="EnemyParent" parent="YSort" instance=ExtResource( 3 )]
-
-[node name="EXP" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 0, 15 )
