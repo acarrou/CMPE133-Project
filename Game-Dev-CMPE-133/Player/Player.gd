@@ -4,6 +4,10 @@ var speed = 300
 var maxhealth = 100
 var currenthealth = maxhealth
 var damage_out = 30
+var current_exp = 0
+var next_level_exp = 4
+var level = 1
+var enemies_killed = 0
 
 var velocity = Vector2()
 var t = Timer.new()
@@ -11,8 +15,10 @@ onready var HealthBar = $HealthBar
 onready var ExpBar = $ExpBar
 
 
-func ready():
+func _ready():
 	add_to_group("Player")
+	ExpBar.max_value = next_level_exp
+	ExpBar.value = current_exp
 	HealthBar.max_value = maxhealth
 
 func get_input():
@@ -40,10 +46,26 @@ func _physics_process(delta):
 func shoot():
 	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
 
+func _on_Gem_area_entered(area):
+	if (area.get_name() == "Gem"):
+		print("Gem Collected")
+		#make sound and animation here
+		current_exp += 1
+		ExpBar.value = current_exp
+		if (current_exp >= next_level_exp):
+			var over_exp = current_exp - next_level_exp
+			level += 1
+			print("Player leveled up!")
+			print("Level", level)
+			current_exp = over_exp
+			next_level_exp *= 1.50
+			ExpBar.max_value = next_level_exp
+
 #Needs its own hitbox function
 func enemyContact(enemyHitbox):
-	currenthealth -= 10
-	HealthBar.value = currenthealth
+	if (enemyHitbox.get_name() == "EnemyHurtbox"):
+		currenthealth -= 10
+		HealthBar.value = currenthealth
 	
 	if (currenthealth <= 0):
 		$AnimationSprite.stop()

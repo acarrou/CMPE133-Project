@@ -1,20 +1,18 @@
-extends RigidBody2D
+extends KinematicBody2D
+
+var collected = false
+var spawn_distance = 0
+		
+#func physics_process():
+	#move_and_slide((get_parent().get_node("Player").position - position).normalized() * $AnimatedSprite.speed_scale*2)
+
+func _on_Magnet_area_entered(area):
+	if (area.get_name() == "PlayerHurtbox"):
+		#Come closer to player
+		pass
 
 
-export var value:int = 5
-
-var impluse_randomizer : RandomNumberGenerator = RandomNumberGenerator.new()
-
-func _ready() -> void:
-	impluse_randomizer.randomize()
-	var impluse:Vector2 = Vector2(impluse_randomizer.randi_range(0,0),impluse_randomizer.randi_range(0,0))
-	self.apply_impulse(self.position,impluse)
-	
-
-
-#func _on_Area2D_body_entered(body: Node) -> void:
-	#if body.is_in_group("player"):
-		#GlobalSingleton.Gold_coin += value
-		#print(GlobalSingleton.Gold_coin)
-		#self.queue_free()
-	#pass # Replace with function body.
+func _on_Gem_area_entered(area):
+	if (area.get_name() == "PlayerHurtbox"):
+		hide()
+		queue_free()
