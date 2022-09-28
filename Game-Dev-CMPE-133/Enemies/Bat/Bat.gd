@@ -5,8 +5,7 @@ onready var current_health = max_health
 var spawn_distance = 1800
 onready var damage = get_parent().get_node("Player").damage_out
 onready var enemies_killed = get_parent().get_node("Player").enemies_killed
-var gem_scene = preload("res://DroppedItems/EXP.tscn")
-#var gem = load("res://DroppedItems/EXP.tscn").instance()
+var gem_scene = preload("res://DroppedItems/EXP/EXP.tscn")
 
 func _ready():
 	position = get_parent().get_node("Player").position + Vector2(spawn_distance, 0).rotated(rand_range(0, 2*PI))

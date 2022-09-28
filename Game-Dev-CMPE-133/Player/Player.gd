@@ -56,10 +56,16 @@ func _on_Gem_area_entered(area):
 			var over_exp = current_exp - next_level_exp
 			level += 1
 			print("Player leveled up!")
-			print("Level", level)
+			print("Level ", level)
 			current_exp = over_exp
 			next_level_exp *= 1.50
 			ExpBar.max_value = next_level_exp
+			
+func _on_HealthPotion_area_entered(area):
+	if (area.get_name() == "Health"):
+		currenthealth += 30
+		HealthBar.value = currenthealth
+
 
 #Needs its own hitbox function
 func enemyContact(enemyHitbox):
@@ -74,3 +80,5 @@ func enemyContact(enemyHitbox):
 		yield($AnimationSprite, "animation_finished")
 		hide()
 		get_tree().reload_current_scene()
+
+

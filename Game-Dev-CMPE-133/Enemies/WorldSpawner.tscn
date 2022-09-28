@@ -1,8 +1,48 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemies/WorldSpawner.gd" type="Script" id=1]
 
+[sub_resource type="Animation" id=9]
+resource_name = "New Anim"
+
 [sub_resource type="Animation" id=7]
+resource_name = "Spawn"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "HealthDrop"
+length = 30.0
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_health"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
 resource_name = "Spawn"
 loop = true
 tracks/0/type = "method"
@@ -30,7 +70,13 @@ script = ExtResource( 1 )
 
 [node name="SpawnAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Spawn"
+"anims/New Anim" = SubResource( 9 )
 anims/Spawn = SubResource( 7 )
+
+[node name="HealthSpawn" type="AnimationPlayer" parent="."]
+autoplay = "HealthDrop"
+anims/HealthDrop = SubResource( 10 )
+anims/Spawn = SubResource( 11 )
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
