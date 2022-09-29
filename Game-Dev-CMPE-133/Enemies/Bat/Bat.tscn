@@ -89,11 +89,12 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 39.0
+radius = 52.0
 height = 72.0
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 31.0
+radius = 66.0
+height = 34.0
 
 [sub_resource type="Animation" id=4]
 resource_name = "Death"
@@ -332,10 +333,10 @@ position = Vector2( -15, -91 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Walking"
+frame = 4
 playing = true
 
 [node name="EnemyHurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="EnemyHurtbox"]

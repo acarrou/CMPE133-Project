@@ -64,6 +64,8 @@ func _on_Gem_area_entered(area):
 func _on_HealthPotion_area_entered(area):
 	if (area.get_name() == "Health"):
 		currenthealth += 30
+		if (currenthealth > 100):
+			currenthealth = 100
 		HealthBar.value = currenthealth
 
 
