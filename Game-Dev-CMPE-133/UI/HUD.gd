@@ -2,10 +2,8 @@ extends CanvasLayer
 
 export var easing_factor = 10
 
-var healthMax = -1
-var healthTarget = -1
-var expMax = -1
-var expTarget = -1
+var healthTarget = [-1, -1]
+var expTarget = [-1, -1]
 
 onready var player = get_node("../YSort/Player")
 onready var healthBar = get_node("MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/ProgressBar")
@@ -16,20 +14,28 @@ func _ready():
 	player.connect("exp_changed", self, "_on_exp_changed")
 
 func _on_health_changed(value, max_value):
-	healthBar.max_value = max_value if healthMax < 0 else healthBar.max_value
-	healthBar.value = value if healthTarget < 0 else healthBar.value
-	healthMax = max_value
-	healthTarget = value
+	# initialization
+	if (healthTarget[1] < 0):
+		healthBar.max_value = max_value
+		healthBar.value = value
+	
+	# set target
+	healthTarget[1] = max_value
+	healthTarget[0] = value
 
 func _on_exp_changed(value, max_value):
-	expBar.max_value = max_value if expMax < 0 else expBar.max_value
-	expBar.value = value if expTarget < 0 else expBar.value
-	expMax = max_value
-	expTarget = value
+	# initialization
+	if (expTarget[1] < 0):
+		expBar.max_value = max_value
+		expBar.value = value
+	
+	# set target
+	expTarget[1] = max_value
+	expTarget[0] = value
 	
 func _physics_process(delta):
 	var easing = 1 - exp(-easing_factor * delta)
-	healthBar.max_value = lerp(healthBar.max_value, healthMax, easing)
-	healthBar.value = lerp(healthBar.value, healthTarget, easing)
-	expBar.max_value = lerp(expBar.max_value, expMax, easing)
-	expBar.value = lerp(expBar.value, expTarget, easing)
+	healthBar.max_value = lerp(healthBar.max_value, healthTarget[1], easing)
+	healthBar.value = lerp(healthBar.value, healthTarget[0], easing)
+	expBar.max_value = lerp(expBar.max_value, expTarget[1], easing)
+	expBar.value = lerp(expBar.value, expTarget[0], easing)
