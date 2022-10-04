@@ -53,13 +53,13 @@ func shoot():
 	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
 
 func change_exp(value):
-		current_exp += 18
-		while (next_level_exp <= current_exp):
-			current_exp -= next_level_exp
-			next_level_exp *= 1.50
-			level += 1
-			
-		emit_signal("exp_changed", current_exp, next_level_exp)
+	current_exp += value
+	while (next_level_exp <= current_exp):
+		current_exp -= next_level_exp
+		next_level_exp *= 1.50
+		level += 1
+		
+	emit_signal("exp_changed", current_exp, next_level_exp)
 
 func change_health(value):
 	currenthealth += value

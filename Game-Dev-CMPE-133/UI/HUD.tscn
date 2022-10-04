@@ -31,28 +31,39 @@ margin_right = 1240.0
 margin_bottom = 680.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 600.0
+margin_right = 416.0
 margin_bottom = 680.0
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 600.0
+margin_right = 416.0
 margin_bottom = 14.0
 text = "placeholder text for the main currency (no way)"
 
 [node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 600.0
+margin_right = 416.0
+margin_bottom = 680.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 420.0
+margin_right = 820.0
+margin_bottom = 680.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 400.0
 margin_bottom = 647.0
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 651.0
-margin_right = 600.0
+margin_right = 400.0
 margin_bottom = 680.0
-rect_min_size = Vector2( 600, 0 )
+rect_min_size = Vector2( 400, 0 )
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_right = 600.0
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+margin_right = 400.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 theme = SubResource( 3 )
@@ -60,17 +71,17 @@ custom_styles/fg = SubResource( 4 )
 value = 10.0
 percent_visible = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="ProgressBar2" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
 margin_top = 24.0
-margin_right = 600.0
+margin_right = 400.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 0, 5 )
 theme = SubResource( 3 )
 value = 5.0
 percent_visible = false
 
-[node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 604.0
+[node name="ReferenceRect2" type="ReferenceRect" parent="MarginContainer/HBoxContainer"]
+margin_left = 824.0
 margin_right = 1240.0
 margin_bottom = 680.0
 size_flags_horizontal = 3
