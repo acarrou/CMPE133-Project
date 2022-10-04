@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/Wizard/Death.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=8]
@@ -245,49 +245,6 @@ tracks/1/keys = {
 "values": [ "default" ]
 }
 
-[sub_resource type="StyleBoxFlat" id=36]
-bg_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.054902, 0.0509804, 0.0509804, 1 )
-
-[sub_resource type="StyleBoxFlat" id=37]
-bg_color = Color( 0.694118, 0.172549, 0.172549, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.0627451, 0.0588235, 0.0588235, 1 )
-
-[sub_resource type="Theme" id=38]
-ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
-ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-ProgressBar/fonts/font = null
-ProgressBar/styles/bg = SubResource( 36 )
-ProgressBar/styles/fg = SubResource( 37 )
-
-[sub_resource type="StyleBoxFlat" id=39]
-bg_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
-
-[sub_resource type="StyleBoxFlat" id=40]
-bg_color = Color( 0.105882, 0.447059, 0.65098, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
-
-[sub_resource type="Theme" id=41]
-ProgressBar/styles/bg = SubResource( 39 )
-ProgressBar/styles/fg = SubResource( 40 )
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 8 )
 
@@ -303,7 +260,7 @@ position = Vector2( -1, -52 )
 scale = Vector2( 2.582, 2.461 )
 frames = SubResource( 1 )
 animation = "Wizard Running"
-frame = 5
+frame = 1
 playing = true
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
@@ -333,26 +290,6 @@ texture = ExtResource( 10 )
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Death = SubResource( 9 )
 anims/RESET = SubResource( 10 )
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-anchor_left = -1.7
-anchor_top = 1.475
-anchor_right = -1.7
-anchor_bottom = 1.475
-margin_left = -61.0
-margin_top = 58.0
-margin_right = 53.0
-margin_bottom = 72.0
-theme = SubResource( 38 )
-value = 100.0
-percent_visible = false
-
-[node name="ExpBar" type="ProgressBar" parent="."]
-margin_left = -1567.0
-margin_top = -868.0
-margin_right = 1559.0
-margin_bottom = -833.0
-theme = SubResource( 41 )
 
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_Gem_area_entered"]
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_HealthPotion_area_entered"]

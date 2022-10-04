@@ -11,67 +11,74 @@ var enemies_killed = 0
 
 var velocity = Vector2()
 var t = Timer.new()
-onready var HealthBar = $HealthBar
-onready var ExpBar = $ExpBar
 
+signal health_changed
+signal exp_changed
 
 func _ready():
 	add_to_group("Player")
-	ExpBar.max_value = next_level_exp
-	ExpBar.value = current_exp
-	HealthBar.max_value = maxhealth
+	emit_signal("health_changed", currenthealth, maxhealth)
+	emit_signal("exp_changed", current_exp, next_level_exp)
 
 func get_input():
-	velocity = Vector2()
+	var v = Vector2.ZERO
 	if Input.is_action_pressed("right"):
-		velocity.x += 1
-		$AnimationSprite.flip_h = false
+		v.x += 1
+		
 	if Input.is_action_pressed("left"):
-		velocity.x -= 1
-		$AnimationSprite.flip_h = true
+		v.x -= 1
+		
 	if Input.is_action_pressed("down"):
-		velocity.y += 1
+		v.y += 1
+		
 	if Input.is_action_pressed("up"):
-		velocity.y -= 1
-	velocity = velocity.normalized() * speed
+		v.y -= 1
+		
+	return v.normalized()
 		
 func _physics_process(delta):
-	get_input()
+	velocity = speed * get_input()
 	if (velocity.x or velocity.y != 0):
 		$AnimationSprite.animation = "Wizard Running"
 		velocity = move_and_slide(velocity)
 	else:
 		$AnimationSprite.animation = "Wizard Idle"
+		
+	if (0 < velocity.x):
+		$AnimationSprite.flip_h = false
+	elif (velocity.x < 0):
+		$AnimationSprite.flip_h = true
 
 func shoot():
 	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
+
+func change_exp(value):
+		current_exp += 18
+		while (next_level_exp <= current_exp):
+			current_exp -= next_level_exp
+			next_level_exp *= 1.50
+			level += 1
+			
+		emit_signal("exp_changed", current_exp, next_level_exp)
+
+func change_health(value):
+	currenthealth += value
+	emit_signal("health_changed", currenthealth, maxhealth)
 
 func _on_Gem_area_entered(area):
 	if (area.get_name() == "Gem"):
 		print("Gem Collected")
 		#make sound and animation here
-		current_exp += 1
-		ExpBar.value = current_exp
-		if (current_exp >= next_level_exp):
-			var over_exp = current_exp - next_level_exp
-			level += 1
-			print("Player leveled up!")
-			print("Level ", level)
-			current_exp = over_exp
-			next_level_exp *= 1.50
-			ExpBar.max_value = next_level_exp
-			
+		change_exp(18)
+
 func _on_HealthPotion_area_entered(area):
 	if (area.get_name() == "Health"):
-		currenthealth += 30
-		HealthBar.value = currenthealth
-
+		change_health(30)
 
 #Needs its own hitbox function
 func enemyContact(enemyHitbox):
 	if (enemyHitbox.get_name() == "EnemyHurtbox"):
-		currenthealth -= 10
-		HealthBar.value = currenthealth
+		change_health(-10)
 	
 	if (currenthealth <= 0):
 		$AnimationSprite.stop()
