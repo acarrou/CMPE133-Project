@@ -332,6 +332,7 @@ position = Vector2( -15, -91 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Walking"
+frame = 4
 playing = true
 
 [node name="EnemyHurtbox" type="Area2D" parent="."]
