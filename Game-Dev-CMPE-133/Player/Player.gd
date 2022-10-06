@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 var speed = 300
-var maxhealth = 100
-var currenthealth = maxhealth
+var max_health = 100
+var current_health = max_health
 var damage_out = 30
 var current_exp = 0
 var next_level_exp = 4
 var level = 1
 var enemies_killed = 0
 
-var velocity = Vector2()
+var velocity = Vector2.ZERO
 var t = Timer.new()
 
 signal health_changed
@@ -17,8 +17,21 @@ signal exp_changed
 
 func _ready():
 	add_to_group("Player")
-	emit_signal("health_changed", currenthealth, maxhealth)
-	emit_signal("exp_changed", current_exp, next_level_exp)
+	emit_signal("exp_changed", current_exp, next_level_exp, level)
+	emit_signal("health_changed", current_health, max_health)
+
+func change_exp(value):
+	current_exp += value
+	while (next_level_exp <= current_exp):
+		current_exp -= next_level_exp
+		next_level_exp *= 1.50
+		level += 1
+		
+	emit_signal("exp_changed", current_exp, next_level_exp, level)
+
+func change_health(value):
+	current_health += value
+	emit_signal("health_changed", current_health, max_health)
 
 func get_input():
 	var v = Vector2.ZERO
@@ -52,19 +65,6 @@ func _physics_process(delta):
 func shoot():
 	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
 
-func change_exp(value):
-	current_exp += value
-	while (next_level_exp <= current_exp):
-		current_exp -= next_level_exp
-		next_level_exp *= 1.50
-		level += 1
-		
-	emit_signal("exp_changed", current_exp, next_level_exp)
-
-func change_health(value):
-	currenthealth += value
-	emit_signal("health_changed", currenthealth, maxhealth)
-
 func _on_Gem_area_entered(area):
 	if (area.get_name() == "Gem"):
 		print("Gem Collected")
@@ -76,16 +76,14 @@ func _on_HealthPotion_area_entered(area):
 		change_health(30)
 
 #Needs its own hitbox function
-func enemyContact(enemyHitbox):
-	if (enemyHitbox.get_name() == "EnemyHurtbox"):
+func enemyContact(hitbox):
+	if (hitbox.get_name() == "EnemyHurtbox"):
 		change_health(-10)
 	
-	if (currenthealth <= 0):
+	if (current_health <= 0):
 		$AnimationSprite.stop()
 		set_physics_process(false)
 		$AnimationSprite.play("Wizard Dying")
 		yield($AnimationSprite, "animation_finished")
 		hide()
 		get_tree().reload_current_scene()
-
-
