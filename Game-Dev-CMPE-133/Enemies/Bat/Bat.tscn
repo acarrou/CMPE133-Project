@@ -292,7 +292,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=23]
-radius = 45.0
+radius = 26.0
 height = 0.0
 
 [node name="Bat" type="KinematicBody2D"]
@@ -310,7 +310,7 @@ position = Vector2( -15, -91 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Walking"
-frame = 2
+frame = 1
 playing = true
 
 [node name="EnemyHurtbox" type="Area2D" parent="."]
@@ -331,7 +331,7 @@ anims/Scaling = SubResource( 6 )
 [node name="SoftCollision" parent="." instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
-position = Vector2( -1, -35 )
+position = Vector2( -2, -6 )
 shape = SubResource( 23 )
 
 [connection signal="area_entered" from="EnemyHurtbox" to="." method="_on_Hurtbox_area_entered"]

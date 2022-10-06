@@ -15,7 +15,7 @@ func _ready():
 func _physics_process(delta):
 	check_death()
 	if softCollision.is_colliding():
-		push += softCollision.get_push_vector() * delta * 400
+		push += softCollision.get_push_vector() * delta * 100
 		move_and_slide(push)
 	move_and_slide((get_parent().get_node("Player").position - position).normalized() * $AnimatedSprite.speed_scale*2 / delta)
 	
