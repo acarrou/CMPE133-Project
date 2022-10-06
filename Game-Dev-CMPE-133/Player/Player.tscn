@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Assets/Wizard/Death.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=8]
@@ -288,9 +288,6 @@ border_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
 ProgressBar/styles/bg = SubResource( 39 )
 ProgressBar/styles/fg = SubResource( 40 )
 
-[sub_resource type="CapsuleShape2D" id=49]
-radius = 88.0
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 8 )
 
@@ -357,9 +354,6 @@ margin_right = 1559.0
 margin_bottom = -833.0
 theme = SubResource( 41 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 49 )
-
-[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_Gem_area_entered"]
-[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_HealthPotion_area_entered"]
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="enemyContact"]
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_HealthPotion_area_entered"]
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_Gem_area_entered"]

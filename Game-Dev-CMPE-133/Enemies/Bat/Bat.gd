@@ -5,6 +5,8 @@ onready var current_health = max_health
 var spawn_distance = 1800
 onready var damage = get_parent().get_node("Player").damage_out
 onready var enemies_killed = get_parent().get_node("Player").enemies_killed
+onready var softCollision = $SoftCollision
+onready var push = Vector2()
 var gem_scene = preload("res://DroppedItems/EXP/EXP.tscn")
 
 func _ready():
@@ -12,13 +14,16 @@ func _ready():
 
 func _physics_process(delta):
 	check_death()
+	if softCollision.is_colliding():
+		push += softCollision.get_push_vector() * delta * 400
+		move_and_slide(push)
 	move_and_slide((get_parent().get_node("Player").position - position).normalized() * $AnimatedSprite.speed_scale*2 / delta)
 	
 	if (position > get_parent().get_node("Player").position):
 		$AnimatedSprite.flip_h = true
 	else:
 		$AnimatedSprite.flip_h = false
-		
+
 func EXP_drop():
 	print("Creating Gem")
 	var gem = gem_scene.instance()
