@@ -30,7 +30,7 @@ func change_exp(value):
 	emit_signal("exp_changed", current_exp, next_level_exp, level)
 
 func change_health(value):
-	current_health += value
+	current_health = min(current_health + value, max_health)
 	emit_signal("health_changed", current_health, max_health)
 
 func get_input():

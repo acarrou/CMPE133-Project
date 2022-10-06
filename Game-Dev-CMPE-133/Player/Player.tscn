@@ -260,6 +260,7 @@ position = Vector2( -1, -52 )
 scale = Vector2( 2.582, 2.461 )
 frames = SubResource( 1 )
 animation = "Wizard Running"
+frame = 1
 playing = true
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
@@ -272,6 +273,7 @@ shape = SubResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 2.5, 2.5 )
+smoothing_enabled = true
 
 [node name="ShootAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Attack"
