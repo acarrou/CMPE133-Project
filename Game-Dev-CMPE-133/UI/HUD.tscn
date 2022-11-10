@@ -1,9 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/HUD.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/Switzer-Bold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Fonts/texgyreheros-bold.otf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
+size = 20
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -19,8 +21,9 @@ ProgressBar/styles/fg = SubResource( 2 )
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.882353, 0.219608, 0.219608, 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 20
+use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
@@ -37,56 +40,62 @@ margin_bottom = -40.0
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_right = 1200.0
 margin_bottom = 640.0
+custom_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 296.0
+margin_right = 450.0
 margin_bottom = 640.0
 size_flags_horizontal = 3
+custom_constants/separation = 0
 
 [node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 296.0
+margin_right = 450.0
 margin_bottom = 640.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 300.0
-margin_right = 900.0
+margin_left = 450.0
+margin_right = 750.0
 margin_bottom = 640.0
+custom_constants/separation = 5
 
 [node name="ReferenceRect" type="ReferenceRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 600.0
-margin_bottom = 557.0
+margin_right = 300.0
+margin_bottom = 545.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 561.0
-margin_right = 600.0
-margin_bottom = 587.0
-rect_min_size = Vector2( 600, 0 )
+margin_top = 550.0
+margin_right = 300.0
+margin_bottom = 585.0
+rect_min_size = Vector2( 300, 0 )
+custom_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
-margin_right = 600.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 6 )
+margin_right = 300.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 5 )
 text = "LVL 19419489"
+valign = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
-margin_top = 24.0
-margin_right = 600.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 0, 2 )
+margin_top = 30.0
+margin_right = 300.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 5 )
 theme = SubResource( 3 )
 value = 25.0
 percent_visible = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 591.0
-margin_right = 600.0
+margin_top = 590.0
+margin_right = 300.0
 margin_bottom = 640.0
-rect_min_size = Vector2( 600, 0 )
+rect_min_size = Vector2( 300, 0 )
+custom_constants/separation = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
-margin_right = 600.0
+margin_right = 300.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 theme = SubResource( 3 )
@@ -95,15 +104,15 @@ value = 50.0
 percent_visible = false
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
-margin_top = 24.0
-margin_right = 600.0
-margin_bottom = 49.0
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 50.0
 custom_colors/font_color = Color( 0.882353, 0.219608, 0.219608, 1 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "+200"
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 904.0
+margin_left = 750.0
 margin_right = 1200.0
 margin_bottom = 640.0
 size_flags_horizontal = 3

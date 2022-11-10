@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="cmpe 133 project"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

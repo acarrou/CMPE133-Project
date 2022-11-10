@@ -63,7 +63,8 @@ func _physics_process(delta):
 		$AnimationSprite.flip_h = true
 
 func shoot():
-	add_child(load("res://Weapons&Spells/Bullet.tscn").instance())
+	var bullet = load("res://Weapons&Spells/Bullet.tscn").instance()
+	add_child(bullet)
 
 func _on_Gem_area_entered(area):
 	if (area.get_name() == "Gem"):
