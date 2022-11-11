@@ -8,13 +8,10 @@ var fade_mode = 0
 var is_busy = false
 
 # signals
-signal fade
+signal fade_finished
 
 func fade(t):
 	fade_mode = t
-
-func _ready():
-	connect("fade", self, "_on_fade")
 
 func _physics_process(delta):
 	if fade_mode == 0:
@@ -25,6 +22,6 @@ func _physics_process(delta):
 	
 	var state = 0 < blackout.modulate.a and blackout.modulate.a < 1
 	if state == false and is_busy != state:
-		emit_signal("fade", self)
+		emit_signal("fade_finished", self)
 	
 	is_busy = state
