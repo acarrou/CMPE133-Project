@@ -1,18 +1,23 @@
 extends CanvasLayer
 
-export var easing_factor = 10
-
-var health_target = [-1, -1]
-var exp_target = [-1, -1]
-
+# references
 onready var player = get_node("../YSort/Player")
 onready var bars = get_node("MarginContainer/HBoxContainer/VBoxContainer2")
 onready var exp_bar = bars.get_node("VBoxContainer/ProgressBar")
 onready var level_label = bars.get_node("VBoxContainer/Label")
 onready var health_bar = bars.get_node("VBoxContainer2/ProgressBar")
 onready var health_label = bars.get_node("VBoxContainer2/Label")
+onready var fade_screen = get_node("../FadeScreen")
+
+# variables
+var health_target = [-1, -1]
+var exp_target = [-1, -1]
+
+# properties
+export var easing_factor = 10
 
 func _ready():
+	fade_screen.fade(-1)
 	player.connect("health_changed", self, "_on_health_changed")
 	player.connect("exp_changed", self, "_on_exp_changed")
 
