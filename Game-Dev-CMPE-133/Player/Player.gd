@@ -14,6 +14,7 @@ var t = Timer.new()
 
 signal health_changed
 signal exp_changed
+signal died
 
 func _ready():
 	add_to_group("Player")
@@ -87,4 +88,4 @@ func enemyContact(hitbox):
 		$AnimationSprite.play("Wizard Dying")
 		yield($AnimationSprite, "animation_finished")
 		hide()
-		get_tree().reload_current_scene()
+		emit_signal("died")
